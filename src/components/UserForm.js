@@ -14,8 +14,7 @@ export class UserForm extends Component {
     occupation: '',
     city: '',
     bio: '',
-   
-  };
+     };
 
   // Proceed to next step
   nextStep = () => {

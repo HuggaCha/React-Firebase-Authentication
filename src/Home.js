@@ -14,7 +14,7 @@ class Home extends Component {
 
     logout(){
     fire.auth().signOut(); 
-  }
+     }
 
   render() {
 
@@ -26,7 +26,7 @@ class Home extends Component {
       label="Register"
       primary={true}
       onClick={this.logout}
-      ></button> 
+      >SIGN OUT</button> 
         
       </div>
     );

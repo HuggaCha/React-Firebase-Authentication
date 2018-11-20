@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import UserForm from './UserForm'
-import AppBar from 'material-ui/AppBar';
-import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
 import Login from './Login';
-import fire from '../config/Fire';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {orange500} from 'material-ui/styles/colors'; 
+import {deepOrange500} from 'material-ui/styles/colors';
+
+
+const muiTheme = getMuiTheme({
+  palette: {
+      primary1Color: "#cddc39",
+      accent1Color: "#76ff03"
+  }
+});
 
 
 export class UserWelcom extends Component{
@@ -17,11 +23,10 @@ next = e => {
     this.props.nextStep();
   };
 
-
 render(){
 
 	return (
-		<MuiThemeProvider>
+		<MuiThemeProvider muiTheme = {muiTheme}>
         <React.Fragment>
             <Login />
             <p>Not registered yet ? Register: </p>

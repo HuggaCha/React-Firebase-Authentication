@@ -9,7 +9,9 @@ const config = {
     storageBucket: "",
     messagingSenderId: "497182918333"
   };
- const fire = firebase.initializeApp(config);
- 
+
+
+ const fire = firebase.initializeApp(config); 
+ fire.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION); //Set the Authentication state persistence (SESSION, LOCAL, NONE)
 
  export default fire; 

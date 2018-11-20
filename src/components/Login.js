@@ -38,7 +38,7 @@ render(){
 	return (
         <MuiThemeProvider>
         <React.Fragment>
-		 <AppBar title="Welcome to User Registration/Login" />
+		    <AppBar title="Welcome to User Registration/Login" />
            <TextField
             name = "email"
             hintText="Your email"
