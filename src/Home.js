@@ -14,6 +14,8 @@ class Home extends Component {
 
     logout(){
     fire.auth().signOut(); 
+    window.location.reload();
+    alert("You have successfully signed out");
   }
 
   render() {
@@ -26,7 +28,7 @@ class Home extends Component {
       label="Register"
       primary={true}
       onClick={this.logout}
-      ></button> 
+      >SIGN OUT</button> 
         
       </div>
     );
