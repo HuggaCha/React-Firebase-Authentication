@@ -3,27 +3,18 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
+import fire from '../config/Fire';
 
 export class Confirm extends Component {
     
   continue = e => {
     e.preventDefault();
-    let title = this.props.values.firstName; 
-    let body = this.props.values.lastName;
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-      method : 'POST', 
-      headers: {'Accept': 'application/json, text/plain, */*',
-                'Content-type': 'application/json' }, 
-      body: JSON.stringify({title: title, body: body}) 
-      
-    })
-    .then(function(res){
-      return res.json(); 
-    })
-    .then(function(data){
-      console.log(data);
-    })
-    this.props.nextStep();
+    console.log('this.state', this.state);
+    fire.auth().createUserWithEmailAndPassword(this.props.values.email, this.props.values.password).catch(function(error) {
+      console.log('error', error);
+    });
+
+
   };
 
   back = e => {
@@ -33,9 +24,12 @@ export class Confirm extends Component {
 
   render() {
     const {
-      values: { firstName, lastName, email, occupation, city, bio }
+      values: { firstName, lastName, email, password }
     } = this.props;
+
+    
     return (
+      
       <MuiThemeProvider>
         <React.Fragment>
           <AppBar title="Confirm User Data" />
@@ -43,10 +37,7 @@ export class Confirm extends Component {
             <ListItem primaryText="First Name" secondaryText={firstName} />
             <ListItem primaryText="Last Name" secondaryText={lastName} />
             <ListItem primaryText="Email" secondaryText={email} />
-            <ListItem primaryText="Occupation" secondaryText={occupation} />
-            <ListItem primaryText="City" secondaryText={city} />
-            <ListItem primaryText="Bio" secondaryText={bio} />
-          </List>
+            </List>
           <br />
           <RaisedButton
             label="Confirm & Continue"

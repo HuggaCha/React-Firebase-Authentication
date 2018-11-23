@@ -4,7 +4,7 @@ import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export class FormUserDetails extends Component {
+export class FormPersonalDetails extends Component {
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -20,7 +20,7 @@ export class FormUserDetails extends Component {
     return (
       <MuiThemeProvider>
         <React.Fragment>
-          <AppBar title="Enter User Details" />
+          <AppBar title="Enter Personal Details" />
           <TextField
             hintText="Enter Your First Name"
             floatingLabelText="First Name"
@@ -36,8 +36,8 @@ export class FormUserDetails extends Component {
           />
           <br />
           <TextField
-            hintText="Enter Your Email"
-            floatingLabelText="Email"
+            hintText="Enter Your E-mail"
+            floatingLabelText="E-mail"
             onChange={handleChange('email')}
             defaultValue={values.email}
           />
@@ -48,7 +48,7 @@ export class FormUserDetails extends Component {
             style={styles.button}
             onClick={this.continue}
           />
-           <RaisedButton
+          <RaisedButton
             label="Back"
             primary={false}
             style={styles.button}
@@ -66,4 +66,4 @@ const styles = {
   }
 };
 
-export default FormUserDetails;
+export default FormPersonalDetails;

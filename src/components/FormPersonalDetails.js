@@ -3,8 +3,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import fire from '../config/Fire';
+import UserForm from './UserForm';
+import FormUserDetails from './FormUserDetails';
+
 
 export class FormPersonalDetails extends Component {
+  
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -15,34 +20,35 @@ export class FormPersonalDetails extends Component {
     this.props.prevStep();
   };
 
+  // checkMatch(e){
+  //   if(e.target.value === this.props.password){
+  //     console.log("Passwords match!")
+  //   } else {
+  //     console.log("passwords dont match");
+  //   }
+  // };
+
   render() {
     const { values, handleChange } = this.props;
+   
+
     return (
       <MuiThemeProvider>
         <React.Fragment>
-          <AppBar title="Enter Personal Details" />
-          <TextField
-            hintText="Enter Your Occupation"
-            floatingLabelText="Occupation"
-            onChange={handleChange('occupation')}
-            defaultValue={values.occupation}
-          />
+           <TextField
+            hintText="Enter Your Password"
+            floatingLabelText="Password"
+            onChange={handleChange('password')}
+            defaultValue={values.password}
+             />
+             <br />
+            <TextField
+            hintText="Retype Your Password"
+            floatingLabelText="Re-type Password"
+            onChange = {this.checkMatch}
+             />
           <br />
-          <TextField
-            hintText="Enter Your City"
-            floatingLabelText="City"
-            onChange={handleChange('city')}
-            defaultValue={values.city}
-          />
-          <br />
-          <TextField
-            hintText="Enter Your Bio"
-            floatingLabelText="Bio"
-            onChange={handleChange('bio')}
-            defaultValue={values.bio}
-          />
-          <br />
-          <RaisedButton
+            <RaisedButton
             label="Continue"
             primary={true}
             style={styles.button}

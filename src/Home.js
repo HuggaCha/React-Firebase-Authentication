@@ -25,6 +25,7 @@ class Home extends Component {
         
       <h1>You are home !</h1>
       <button 
+      name = "signout"
       label="Register"
       primary={true}
       onClick={this.logout}

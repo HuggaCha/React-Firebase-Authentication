@@ -24,7 +24,9 @@ render(){
 		<MuiThemeProvider>
         <React.Fragment>
             <Login />
-            <p>Not registered yet ? Register: </p>
+            <p
+            name="registration-text"
+            >Not registered yet ? Register: </p>
             <RaisedButton 
             label="Register"
             primary={true}
