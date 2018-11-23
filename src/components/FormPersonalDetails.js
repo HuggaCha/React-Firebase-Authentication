@@ -36,6 +36,7 @@ export class FormPersonalDetails extends Component {
       <MuiThemeProvider>
         <React.Fragment>
            <TextField
+            type = "password"
             hintText="Enter Your Password"
             floatingLabelText="Password"
             onChange={handleChange('password')}
@@ -43,6 +44,7 @@ export class FormPersonalDetails extends Component {
              />
              <br />
             <TextField
+            type = "password"
             hintText="Retype Your Password"
             floatingLabelText="Re-type Password"
             onChange = {this.checkMatch}
