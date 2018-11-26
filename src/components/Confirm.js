@@ -4,6 +4,7 @@ import AppBar from 'material-ui/AppBar';
 import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import fire from '../config/Fire';
+import Notification from './Notification';
 
 export class Confirm extends Component {
     
@@ -12,6 +13,7 @@ export class Confirm extends Component {
     console.log('this.state', this.state);
     fire.auth().createUserWithEmailAndPassword(this.props.values.email, this.props.values.password).catch(function(error) {
       console.log('error', error);
+      
     });
 
 
@@ -51,6 +53,8 @@ export class Confirm extends Component {
             style={styles.button}
             onClick={this.back}
           />
+          <br/>
+          
         </React.Fragment>
       </MuiThemeProvider>
     );

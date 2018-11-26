@@ -6,6 +6,7 @@ import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import fire from '../config/Fire';
+import Notification from './Notification';
 
 
 export class Login extends Component {
@@ -16,16 +17,37 @@ export class Login extends Component {
       this.handleChange = this.handleChange.bind(this);
       this.state = {
          email: '',
-         password: ''
+         password: '',
+         errMessage: ''
       }
+
    }
 
    login(e) {
       e.preventDefault();
-      fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => { }).catch((error) => {
-         console.log(error);
-      });
+      fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => { 
+         console.log(u.additionalUserInfo)
+         console.log(u.displayName)
+      }).catch((error) => {
+         console.log(error.message);
+         this.setState({errMessage: "*" + error.message});
+            });
+      
+      fire.auth().onAuthStateChanged(function(user){
+         if(user){
+            user.updateProfile({
+               displayName: "Murad"
+            }).then(function(){
+               console.log("Update sucess");
+            }).catch(function(){
+               console.log("Update faield");
+            })
+         }
+      })
+
    }
+
+   
 
    handleChange(e) {
       this.setState({ [e.target.name]: e.target.value });
@@ -58,7 +80,9 @@ export class Login extends Component {
                   primary={true}
                   onClick={this.login}
                />
-            </React.Fragment>
+               <br/>
+               <Notification message = {this.state.errMessage}/>
+             </React.Fragment>
          </MuiThemeProvider>
       );
    }
